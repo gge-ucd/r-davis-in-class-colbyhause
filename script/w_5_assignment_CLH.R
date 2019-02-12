@@ -15,7 +15,8 @@ biggest_critters <- surveys %>%
   group_by(species_id, sex) %>% 
   summarize(max_weight = max(weight))
 
-arrange(biggest_critters, max_weight)
+arrange(biggest_critters, max_weight) %>% 
+  View()
 
 
 
@@ -23,18 +24,19 @@ arrange(biggest_critters, max_weight)
 
 surveys %>% 
   group_by(sex) %>% 
-  filter(is.na(sex)) %>% 
+  filter(is.na(weight)) %>% 
   tally()
   
 surveys %>% 
+  group_by(species) %>% 
   filter(is.na(weight)) %>% 
   tally() %>% 
   View()
 
 surveys %>% 
- arrange(plot_type) %>% 
   group_by(plot_type) %>% 
-  tally()
+  filter(is.na(weight)) %>% 
+  tally() %>% 
   View()
 
 #Take surveys, remove the rows where weight is NA and add a column that contains the average weight of each species+sex combination. Then get rid of all the columns except for species, sex, weight, and your new average weight column. Save this tibble as surveys_avg_weight. The resulting tibble should have 32,283 rows.
