@@ -64,7 +64,7 @@ mloa_2001_noNAs<- mloa_2001 %>%
 
 #Function:
 
-plot_temp <- function(x) {
+plot_temp <- function(x) { 
   data <- mloa_2001_noNAs
   temp_plot <- data %>% 
   filter(month == x) %>% 
@@ -77,3 +77,20 @@ plot_temp <- function(x) {
 plot_temp(2)
 plot_temp(6)
 
+#week 9 touching upon function from the HW:
+#can also do this:
+plot_temp <- function(monthtoinput, dat = mloa_2001_noNAs) { # so defaukt for dat is that
+  data <- mloa_2001_noNAs
+  temp_plot <- data %>% 
+  filter(month == monthtoinput) %>% 
+  ggplot(aes(x = datetime, y = temp_C_2m)) +
+  geom_line()
+return(temp_plot)
+}
+
+plot_temp(3)
+  
+  
+  
+  
+  
